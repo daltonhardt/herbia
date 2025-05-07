@@ -1,7 +1,5 @@
 import streamlit as st
 import pandas as pd
-import segno
-from io import BytesIO
 import time
 import datetime
 import re
@@ -10,8 +8,6 @@ def get_date():
     # Get the current date and time
     now = datetime.datetime.now()
     # Convert to string and format
-    # DATA = datetime.strptime(datetime.now().strftime("%d-%b-%Y"), "%d-%b-%Y")
-    # HORA = datetime.strptime(datetime.now().strftime("%H:%M"), "%H:%M")
     DATA = now.strftime("%d-%m-%Y")
     HORA = now.strftime("%H:%M")
     return DATA, HORA
@@ -36,7 +32,15 @@ for chave in ['key_nome', 'key_sobrenome', 'key_email', 'key_telefone', 'key_per
 
 st.set_page_config(page_title="Cadastro Herbia", layout="centered")
 
-# st.logo('./resources/Herbia.png', size="large")
+st.markdown(
+        r"""
+        <style>
+        .stAppDeployButton {
+                visibility: hidden;
+            }
+        </style>
+        """, unsafe_allow_html=True
+    )
 
 st.title("Participe do Sorteio da Herbia!")
 st.subheader("Preencha seus dados abaixo:")
